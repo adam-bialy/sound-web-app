@@ -48,12 +48,12 @@ class MainPage:
                            style="padding-top: 10px; padding-bottom: 10px; padding-right: 10px; padding-left: 10px; ")
 
         button = jp.QButton(a=sound_div, text="Start", style="background-color: yellow;",
-                            click=cls.play_sound, sound=sound)
+                            click=cls.play_sound)
 
         jp.Div(a=sound_div, text="Volume",
                style="margin-top: 20px; margin-bottom: 25px; font-weight: bold;")
 
-        vol_slider = jp.QSlider(a=sound_div, sound=sound, color="purple",
+        vol_slider = jp.QSlider(a=sound_div, color="purple",
                                 style="margin-top: 12px;",
                                 label=True, label_always=True,
                                 min=1, max=9, step=1, value=4)
@@ -62,7 +62,7 @@ class MainPage:
         jp.Div(a=sound_div, text="Frequency",
                style="margin-top: 20px; margin-bottom: 25px; font-weight: bold;")
 
-        freq_slider = jp.QSlider(a=sound_div, sound=sound,
+        freq_slider = jp.QSlider(a=sound_div,
                                  color="purple", label=True, label_always=True,
                                  style="margin-top: 12px;",
                                  min=1, max=len(freq_dict.keys()), step=1, value=85, freq_dict=freq_dict)
@@ -86,12 +86,12 @@ class MainPage:
 
         low_button = jp.QButton(a=input_div, text="Mark lower bound",
                                 style="background-color: yellow; margin-right: 100px;",
-                                out=low_out, sound=sound,
+                                out=low_out,
                                 click=cls.get_freq)
 
         high_button = jp.QButton(a=input_div, text="Mark upper bound",
                                  style="background-color: yellow; margin-left: 100px;",
-                                 out=high_out, sound=sound,
+                                 out=high_out,
                                  click=cls.get_freq)
 
         submit_div = jp.Div(a=main_div)
@@ -106,7 +106,7 @@ class MainPage:
         line4 = jp.Div(a=results_div, text="")
         line5 = jp.Div(a=results_div, text="")
 
-        submit_button = jp.QButton(a=submit_div, text="Submit", low=low_out, high=high_out, sound=sound,
+        submit_button = jp.QButton(a=submit_div, text="Submit", low=low_out, high=high_out,
                                    style="background-color: yellow; width: 30%;",
                                    click=cls.submit, results=[line1, line2, line3, line4, line5],
                                    report=None)
@@ -136,10 +136,10 @@ class MainPage:
         """
         if widget.text == "Start":
             widget.text = "Stop"
-            widget.sound.play()
+            widget.a.a.a.a.sound.play()
         else:
             widget.text = "Start"
-            widget.sound.stop()
+            widget.a.a.a.a.sound.stop()
 
     @staticmethod
     def set_freq(widget, msg):
@@ -147,7 +147,7 @@ class MainPage:
         Adjust frequency based on slider setting
         """
         f = int(widget.freq_dict[widget.value])
-        widget.sound.set_frequency(f)
+        widget.a.a.a.a.sound.set_frequency(f)
         widget.label_value = f"{f} Hz"
 
     @staticmethod
@@ -156,14 +156,14 @@ class MainPage:
         Adjust volume based on slider setting
         """
         v = float(widget.value) * 0.03
-        widget.sound.set_volume(v)
+        widget.a.a.a.a.sound.set_volume(v)
 
     @staticmethod
     def get_freq(widget, msg):
         """
         Extract current frequency and post it to label under buttons
         """
-        f = int(round(widget.sound.freq))
+        f = int(round(widget.a.a.a.a.sound.freq))
         widget.out.text = f"{f} Hz"
 
     @staticmethod
@@ -217,5 +217,4 @@ class MainPage:
 
 if __name__ == "__main__":
     jp.Route(MainPage.path, MainPage.serve)
-
-    jp.justpy(port=8002)
+    jp.justpy()
