@@ -26,9 +26,9 @@ class MainPage:
 
         wp = MyPage(sound=sound, title="Good Time Institute", favicon="icon.jpg")
 
-        body = jp.Div(a=wp, style="background-color: lightgreen; height: 100vh; width: 100%;")
+        body = jp.Div(a=wp, style="background-color: #C1FFD7; height: 100vh; width: 100%;")
 
-        main_div = jp.Div(a=body, style="background-color: lightgreen; height: 100vh; width: 50%; padding: 20px; "
+        main_div = jp.Div(a=body, style="background-color: #C1FFD7; height: 100vh; width: 50%; padding: 20px; "
                                         "text-align: center; margin: auto; ")
 
         jp.Div(a=main_div, text="Hearing frequency range test",
@@ -47,14 +47,14 @@ class MainPage:
         sound_div = jp.Div(a=main_div,
                            style="padding-top: 10px; padding-bottom: 10px; padding-right: 10px; padding-left: 10px; ")
 
-        button = jp.QButton(a=sound_div, text="Start", style="background-color: yellow;",
+        button = jp.QButton(a=sound_div, text="Start", style="background-color: #FCFFA6;",
                             click=cls.play_sound)
 
         jp.Div(a=sound_div, text="Volume",
                style="margin-top: 20px; margin-bottom: 25px; font-weight: bold;")
 
-        vol_slider = jp.QSlider(a=sound_div, color="purple",
-                                style="margin-top: 12px;",
+        vol_slider = jp.QSlider(a=sound_div,
+                                style="color: #CAB8FF; margin-top: 12px;",
                                 label=True, label_always=True,
                                 min=1, max=9, step=1, value=4)
         vol_slider.on("change", cls.set_vol)
@@ -63,8 +63,8 @@ class MainPage:
                style="margin-top: 20px; margin-bottom: 25px; font-weight: bold;")
 
         freq_slider = jp.QSlider(a=sound_div,
-                                 color="purple", label=True, label_always=True,
-                                 style="margin-top: 12px;",
+                                 label=True, label_always=True,
+                                 style="color: #CAB8FF; margin-top: 12px;",
                                  min=1, max=len(freq_dict.keys()), step=1, value=85, freq_dict=freq_dict)
         freq_slider.label_value = f"{freq_dict[freq_slider.value]} Hz"
         freq_slider.on("change", cls.set_freq)
@@ -85,12 +85,12 @@ class MainPage:
                                 "font-size: 1.5em; font-family: Helvetica; ")
 
         low_button = jp.QButton(a=input_div, text="Mark lower bound",
-                                style="background-color: yellow; margin-right: 100px;",
+                                style="background-color: #FCFFA6; margin-right: 100px;",
                                 out=low_out,
                                 click=cls.get_freq)
 
         high_button = jp.QButton(a=input_div, text="Mark upper bound",
-                                 style="background-color: yellow; margin-left: 100px;",
+                                 style="background-color: #FCFFA6; margin-left: 100px;",
                                  out=high_out,
                                  click=cls.get_freq)
 
@@ -107,7 +107,7 @@ class MainPage:
         line5 = jp.Div(a=results_div, text="")
 
         submit_button = jp.QButton(a=submit_div, text="Submit", low=low_out, high=high_out,
-                                   style="background-color: yellow; width: 30%;",
+                                   style="background-color: #FCFFA6; width: 30%;",
                                    click=cls.submit, results=[line1, line2, line3, line4, line5],
                                    report=None)
 
@@ -121,7 +121,7 @@ class MainPage:
                                       "padding-left: 10px; padding-right: 10px; ")
 
         report_button = jp.QButton(a=report_div, text="Generate certificate",
-                                   style="background-color: yellow; ",
+                                   style="background-color: #FCFFA6; ",
                                    disable=False, click=cls.get_certificate,
                                    low=low_out, high=high_out, report_name=report_name)
 
