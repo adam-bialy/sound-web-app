@@ -24,15 +24,14 @@ class MainPage:
 
         freq_dict = cls.gen_freq_dict()
 
-        wp = MyPage(sound=sound, title="Good Time Institute", favicon="icon.jpg")
+        wp = MyPage(sound=sound, title="Good Time Institute", favicon="icon.jpg", tailwind=True)
 
-        body = jp.Div(a=wp, style="background-color: #C1FFD7; height: 100vh; width: 100%;")
+        body = jp.Div(a=wp, style="background-color: #C1FFD7; width: 100%;")
 
-        main_div = jp.Div(a=body, style="background-color: #C1FFD7; height: 100vh; width: 50%; padding: 20px; "
-                                        "text-align: center; margin: auto; ")
+        main_div = jp.Div(a=body, classes="py-10 m-auto text-center lg:w-1/2 md:w-3/4 sm:w-3/4 lg:text-base md:text-lg sm:text-lg")
 
         jp.Div(a=main_div, text="Hearing frequency range test",
-               style="font-family: Helvetica; font-size: 2em; font-weight: bold; padding: 5px;")
+               style="font-family: Helvetica; font-size: 2em; font-weight: bold; padding: 0 0 20px;")
         jp.Div(a=main_div, text="Instructions:",
                style="font-family: Helvetica; font-size: 1em; font-weight: bold; padding-bottom: 4px;")
         jp.Div(a=main_div, text="Use headphones for best results. "
@@ -54,7 +53,7 @@ class MainPage:
                style="margin-top: 20px; margin-bottom: 25px; font-weight: bold;")
 
         vol_slider = jp.QSlider(a=sound_div,
-                                style="color: #CAB8FF; margin-top: 12px;",
+                                style="color: #BAA8EF; margin-top: 12px;",
                                 label=True, label_always=True,
                                 min=1, max=9, step=1, value=4)
         vol_slider.on("change", cls.set_vol)
@@ -64,7 +63,7 @@ class MainPage:
 
         freq_slider = jp.QSlider(a=sound_div,
                                  label=True, label_always=True,
-                                 style="color: #CAB8FF; margin-top: 12px;",
+                                 style="color: #BAA8EF; margin-top: 12px;",
                                  min=1, max=len(freq_dict.keys()), step=1, value=85, freq_dict=freq_dict)
         freq_slider.label_value = f"{freq_dict[freq_slider.value]} Hz"
         freq_slider.on("change", cls.set_freq)
