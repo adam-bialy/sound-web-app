@@ -216,4 +216,4 @@ class MainPage:
 
 app = jp.app
 jp.Route(MainPage.path, MainPage.serve)
-jp.justpy(start_server=False)
+jp.justpy()
