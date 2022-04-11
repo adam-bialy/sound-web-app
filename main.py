@@ -214,6 +214,6 @@ class MainPage:
         return d
 
 
-if __name__ == "__main__":
-    jp.Route(MainPage.path, MainPage.serve)
-    jp.justpy()
+app = jp.app
+jp.Route(MainPage.path, MainPage.serve)
+jp.justpy(start_server=False)
